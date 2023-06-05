@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.ValueObjects.Room
 {
-    public enum Status
+    public enum RoomStatus
     {
         Available,
         Occupied,

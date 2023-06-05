@@ -11,14 +11,14 @@ namespace Domain.Entities
     {
         public int Id { get; private set; }
         public RoomName Name { get; private set; }
-        public Status Status { get; private set; }
+        public RoomStatus Status { get; private set; }
 
         private Room()
         {
             
         }
 
-        public Room(string name, Status status)
+        public Room(string name, RoomStatus status)
         {
             Name = new RoomName(name);
             Status = status;
@@ -28,7 +28,7 @@ namespace Domain.Entities
         {
             Name = new RoomName(name);
         }
-        public void SetStatus(Status status)
+        public void SetStatus(RoomStatus status)
         {
             Status = status;
         }
