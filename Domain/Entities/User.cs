@@ -16,7 +16,9 @@ namespace Domain.Entities
         public Login Login { get; private set; }
         public Password Password { get; private set; }
         public Email Email { get; private set; }
-            
+        public DateTime LastReservationDate { get; set; }
+        public int WeeklyMeetingCount { get; set; }
+        
 
 
         private User()
