@@ -1,6 +1,4 @@
-﻿using Domain.Exceptions.Reservation;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public class Reservation
     {
@@ -20,25 +18,10 @@ namespace Domain.Entities
 
         public Reservation(Room reservedRoom, User reservedUser, DateTime startReservationDate, DateTime endReservationDate)
         {
-            if (!CanMakeReservation(reservedUser))
-            {
-                throw new InvalidCreateReservationException("User is not allowed to make a reservation.");
-            }
-
             ReservedRoom = reservedRoom;
             ReservedUser = reservedUser;
             StartReservationDate = startReservationDate;
             EndReservationDate = endReservationDate;
-
-            if(reservedUser.Role.Name == ValueObjects.Role.RoleName.Manager || reservedUser.Role.Name == ValueObjects.Role.RoleName.User)
-            {
-
-                reservedUser.LastReservationDate = DateTime.Now;
-                reservedUser.WeeklyMeetingCount++;
-
-            }
-
-            
         }
 
         public void ChangeRoom(Room room)
@@ -93,30 +76,9 @@ namespace Domain.Entities
             {
                 invitedUsers.Remove(invitedUser);
             }
-            
+         
         }
-
-
-        public bool CanMakeReservation(User user)
-        {
-            int maxWeeklyMeetingsForManager = 4;
-
-            int maxWeeklyMeetingsForUser = 2;
-
-            int maxWeeklyMeetings = (user.Role.Name == ValueObjects.Role.RoleName.Manager) ? maxWeeklyMeetingsForManager : maxWeeklyMeetingsForUser;
-
-            if (user.Role.Name == ValueObjects.Role.RoleName.Boss)
-            {
-                return true;
-            }
-          
-            if (user.WeeklyMeetingCount < maxWeeklyMeetings && user.LastReservationDate.AddDays(7) < DateTime.Now)
-            {
-                return true;
-            }
-
-            return false;
-        }
+        
 
     }
 }

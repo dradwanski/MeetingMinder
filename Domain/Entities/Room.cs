@@ -11,26 +11,21 @@ namespace Domain.Entities
     {
         public int Id { get; private set; }
         public RoomName Name { get; private set; }
-        public RoomStatus Status { get; private set; }
 
         private Room()
         {
             
         }
 
-        public Room(string name, RoomStatus status)
+        public Room(string name)
         {
             Name = new RoomName(name);
-            Status = status;
         }
 
         public void SetName(string name)
         {
             Name = new RoomName(name);
         }
-        public void SetStatus(RoomStatus status)
-        {
-            Status = status;
-        }
+
     }
 }
