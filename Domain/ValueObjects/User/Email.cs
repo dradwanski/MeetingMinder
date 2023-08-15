@@ -2,16 +2,21 @@
 
 namespace Domain.ValueObjects.User
 {
-    public class Email
+    public record Email
     {
-        public string _email { get; private set; }
+        public string Mail { get; private set; }
 
         public Email(string email)
         {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                throw new MailValidateException("Email is null or white space");
+            }
             try
             {
+                
                 new System.Net.Mail.MailAddress(email);
-                _email = email;
+                Mail = email;
             }
             catch
             {

@@ -9,13 +9,12 @@ namespace Domain.Entities
 {
     public class User
     {
-        public int UserId { get; private set; }
-        public FirstName FirstName { get; private set; }
-        public LastName LastName { get; private set; }
-        public Role Role { get; private set; }
-        public Login Login { get; private set; }
-        public Password Password { get; private set; }
-        public Email Email { get; private set; }
+        public int UserId { get;  set; }
+        public FirstName FirstName { get;  set; }
+        public LastName LastName { get;  set; }
+        public Role Role { get;  set; }
+        public Password Password { get;  set; }
+        public Email Email { get;  set; }
         
 
         private User()
@@ -23,38 +22,33 @@ namespace Domain.Entities
             
         }
 
-        public User(string firstName, string lastName, Role role, string login, string password, string email)
+        public User(string firstName, string lastName, Role role, string password, string email)
         {
             FirstName = new FirstName(firstName);
             LastName = new LastName(lastName);
             Role = role;
-            Login = new Login(login);
             Password = new Password(password);
             Email = new Email(email);
         }
 
 
-        public void SetFirstName(string firstName)
+        public void SetNewFirstName(string firstName)
         {
             FirstName = new FirstName(firstName);
         }
-        public void SetLastName(string lastname)
+        public void SetNewLastName(string lastname)
         {
             LastName = new LastName(lastname);
         }
-        public void SetRole(Role role)
+        public void SetNewRole(Role role)
         {
             Role = role;
         }
-        public void SetLogin(string login)
-        {
-            Login = new Login(login);
-        }
-        public void SetPassword(string password)
+        public void SetNewPassword(string password)
         {
             Password = new Password(password);
         }
-        public void SetEmail(string email)
+        public void SetNewEmail(string email)
         {
             Email = new Email(email);
         }

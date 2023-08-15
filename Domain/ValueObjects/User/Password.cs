@@ -3,20 +3,20 @@ using System.Text.RegularExpressions;
 
 namespace Domain.ValueObjects.User
 {
-    public class Password
+    public record Password
     {
-        public string _password { get; private set; }
+        public string Value { get; private set; }
         Regex ValidatePassword = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
 
         public Password(string password)
         {
 
-            if (!ValidatePassword.IsMatch(password))
+            if (string.IsNullOrWhiteSpace(password) || !ValidatePassword.IsMatch(password))
             {
                 throw new PasswordValidateException("Invalid password");
             }
 
-            _password = password;
+            Value = password;
 
 
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Exceptions.User
 {
-    internal class LastNameNullException : DomainException
+    public class FirstNameException : DomainException
     {
-        public LastNameNullException(string exception) : base(exception)
+        public FirstNameException(string exception) : base(exception)
         {
         }
     }

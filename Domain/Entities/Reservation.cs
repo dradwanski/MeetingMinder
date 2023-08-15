@@ -1,4 +1,6 @@
-﻿namespace Domain.Entities
+﻿using Domain.Exceptions.Reservation;
+
+namespace Domain.Entities
 {
     public class Reservation
     {
@@ -36,12 +38,20 @@
 
         public void ChangeStartDate(DateTime startDate)
         {
+            if(startDate > EndReservationDate)
+            {
+                throw new InvalidStartDateException("Reservation start date cannot be heigher than reservation end date");
+            }
             StartReservationDate = startDate;
         }
 
         public void ChangeEndDate(DateTime endDate)
         {
-            EndReservationDate= endDate;
+            if (endDate < StartReservationDate)
+            {
+                throw new InvalidEndDateException("Reservation end date cannot be lower than reservation start date");
+            }
+            EndReservationDate = endDate;
         }
 
         public void Invite(User user)
@@ -53,6 +63,7 @@
             {
                 invitedUser.Accept();
             }
+
 
             invitedUsers.Add(invitedUser);
             
@@ -74,7 +85,7 @@
 
             if(invitedUser != null)
             {
-                invitedUsers.Remove(invitedUser);
+                invitedUser.Cancel();
             }
          
         }

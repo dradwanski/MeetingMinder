@@ -22,7 +22,7 @@ namespace Domain.Entities
             Name = new RoomName(name);
         }
 
-        public void SetName(string name)
+        public void SetNewName(string name)
         {
             Name = new RoomName(name);
         }

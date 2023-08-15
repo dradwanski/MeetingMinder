@@ -15,7 +15,7 @@ namespace Domain.ValueObjects.Room
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new FirstNameNullException("Name of room cannot be null");
+                throw new FirstNameException("Name of room cannot be null");
             }
             Name = name;
         }

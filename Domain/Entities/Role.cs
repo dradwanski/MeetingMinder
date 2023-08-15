@@ -7,9 +7,14 @@ namespace Domain.Entities
         public int RoleId { get; private set; }
         public RoleName Name { get; private set; }
 
+        public Role(RoleName name)
+        {
+            Name = name;
+        }
         private Role()
         {
-            
+
         }
+
     }
 }

@@ -2,16 +2,16 @@
 
 namespace Domain.ValueObjects.User
 {
-    public class LastName
+    public record LastName
     {
-        public string _LastName { get; private set; }
+        public string Name { get; private set; }
         public LastName(string lastname)
         {
             if (string.IsNullOrWhiteSpace(lastname))
             {
-                throw new LastNameNullException("LastName cannot be null");
+                throw new LastNameException("LastName cannot be null");
             }
-            _LastName = lastname;
+            Name = lastname;
         }
     }
 }

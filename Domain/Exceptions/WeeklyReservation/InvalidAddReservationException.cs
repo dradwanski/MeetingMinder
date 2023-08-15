@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Exceptions.WeeklyReservation
 {
-    internal class InvalidAddReservationException : DomainException
+    public class InvalidAddReservationException : DomainException
     {
         public InvalidAddReservationException(string exception) : base(exception)
         {
+
         }
     }
 }
