@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repozitores
+namespace Application.Commands.Reservation
 {
-    internal interface IRoomRepository
+    public record UpdateReservationCommand
     {
+
     }
 }

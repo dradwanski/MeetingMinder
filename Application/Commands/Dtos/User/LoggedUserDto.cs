@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Repozitores
+namespace Application.Commands.Dtos.User
 {
-    internal interface IReservationRepository
-    {
-    }
+    public record LoggedUserDto(Token Token);
 }

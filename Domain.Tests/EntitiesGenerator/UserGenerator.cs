@@ -25,7 +25,7 @@ namespace Domain.EntitiesGenerator
             var userEmail = Faker.Internet.Email();
 
 
-            User user = new User(userFirstName, userLastName, new Role(role), userPassword, userEmail);
+            User user = new User(userFirstName, userLastName, role, userPassword, userEmail);
 
             return user;
         }

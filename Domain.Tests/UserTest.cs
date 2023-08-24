@@ -28,7 +28,7 @@ namespace Domain.Tests
             //assert
 
 
-            Assert.Equal("Karol", user.FirstName.Name);
+            Assert.Equal("Karol", user.FirstName.Value);
 
 
 
@@ -72,7 +72,7 @@ namespace Domain.Tests
             //assert
 
 
-            Assert.Equal("Elegancki", user.LastName.Name);
+            Assert.Equal("Elegancki", user.LastName.Value);
 
 
 
@@ -112,18 +112,17 @@ namespace Domain.Tests
         {
 
             //arrange
-            Role roleOfUser = new Role(role);
-            Role newRoleOfUser = new Role(newRole);
-            User user = userGenerator.GenerateUser(roleOfUser.Name);
+
+            User user = userGenerator.GenerateUser(role);
 
             //act
 
-            user.SetNewRole(newRoleOfUser);
+            user.SetNewRole(newRole);
 
             //assert
 
 
-            Assert.Equal(newRoleOfUser, user.Role);
+            Assert.Equal(newRole, user.Role.Name);
 
 
 
@@ -188,7 +187,7 @@ namespace Domain.Tests
             //assert
 
 
-            Assert.Equal("mail@mail.pl", user.Email.Mail);
+            Assert.Equal("mail@mail.pl", user.Email.Value);
 
 
 
@@ -196,7 +195,7 @@ namespace Domain.Tests
 
         [Theory]
         [InlineData("mail")]
-        [InlineData("Mail@")]
+        [InlineData("Value@")]
         [InlineData(" ")]
         [InlineData(null)]
         public void SetNewEmail_SetNotValidEmail_MailValidateException(string email)

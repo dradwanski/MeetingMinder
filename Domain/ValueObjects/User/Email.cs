@@ -4,7 +4,7 @@ namespace Domain.ValueObjects.User
 {
     public record Email
     {
-        public string Mail { get; private set; }
+        public string Value { get; private set; }
 
         public Email(string email)
         {
@@ -16,7 +16,7 @@ namespace Domain.ValueObjects.User
             {
                 
                 new System.Net.Mail.MailAddress(email);
-                Mail = email;
+                Value = email;
             }
             catch
             {

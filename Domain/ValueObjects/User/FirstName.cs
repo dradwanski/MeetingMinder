@@ -4,7 +4,7 @@ namespace Domain.ValueObjects.User
 {
     public record FirstName
     {
-        public string Name{ get; private set; }
+        public string Value{ get; private set; }
         public FirstName(string firstName)
         {
 
@@ -12,7 +12,7 @@ namespace Domain.ValueObjects.User
             {
                 throw new FirstNameException("FirstName cannot be null");
             }
-            Name = firstName;
+            Value = firstName;
         }
 
     }

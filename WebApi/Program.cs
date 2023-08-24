@@ -12,6 +12,7 @@ builder.Services
     .AddApplication()
     .AddInfrastructure();
 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.ValueObjects.Role;
 
 namespace Domain.Entities
 {
     public class User
     {
-        public int UserId { get;  set; }
-        public FirstName FirstName { get;  set; }
-        public LastName LastName { get;  set; }
-        public Role Role { get;  set; }
-        public Password Password { get;  set; }
-        public Email Email { get;  set; }
+        public int UserId { get; private set; }
+        public FirstName FirstName { get; private set; }
+        public LastName LastName { get; private set; }
+        public Role Role { get; private set; }
+        public Password Password { get; private set; }
+        public Email Email { get; private set; }
         
 
         private User()
@@ -22,11 +23,11 @@ namespace Domain.Entities
             
         }
 
-        public User(string firstName, string lastName, Role role, string password, string email)
+        public User(string firstName, string lastName, RoleName role, string password, string email)
         {
             FirstName = new FirstName(firstName);
             LastName = new LastName(lastName);
-            Role = role;
+            Role = new Role(role);
             Password = new Password(password);
             Email = new Email(email);
         }
@@ -40,9 +41,9 @@ namespace Domain.Entities
         {
             LastName = new LastName(lastname);
         }
-        public void SetNewRole(Role role)
+        public void SetNewRole(RoleName role)
         {
-            Role = role;
+            Role = new Role(role);
         }
         public void SetNewPassword(string password)
         {

@@ -4,14 +4,14 @@ namespace Domain.ValueObjects.User
 {
     public record LastName
     {
-        public string Name { get; private set; }
-        public LastName(string lastname)
+        public string Value { get; private set; }
+        public LastName(string lastName)
         {
-            if (string.IsNullOrWhiteSpace(lastname))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 throw new LastNameException("LastName cannot be null");
             }
-            Name = lastname;
+            Value = lastName;
         }
     }
 }

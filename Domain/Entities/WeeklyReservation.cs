@@ -29,6 +29,14 @@ namespace Domain.Entities
             SetMonday(date);
         }
 
+        private void SetMonday(DateTime date)
+        {
+
+            firstDayOfWeek = date.AddDays(-(int)date.DayOfWeek);
+
+        }
+
+
         public void CancelReservation(Reservation reservation)
         {
             var reservationToCancel = reservations.FirstOrDefault(x => x.Id == reservation.Id); 
@@ -40,12 +48,6 @@ namespace Domain.Entities
 
         }
 
-        private void SetMonday(DateTime date)
-        {
-
-            firstDayOfWeek = date.AddDays(-(int) date.DayOfWeek);
-
-        }
 
         public void AddReservation(Reservation reservation, ILimitReservationsForUser limitReservationsForUser)
         {
@@ -65,24 +67,6 @@ namespace Domain.Entities
             reservations.Add(reservation);
         }
 
-       /*
-        private int GetReservationLimit(User user)
-        {
-            var role = user.Role.Name;
-            
-            switch (role)
-            {
-                case ValueObjects.Role.RoleName.Boss:
-                    return int.MaxValue;
-                case ValueObjects.Role.RoleName.Manager:
-                    return 3;
-                case ValueObjects.Role.RoleName.User:
-                    return 1;
-                default:
-                    return 0; 
-            }
-        }
-        */
 
     }
 }

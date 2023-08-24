@@ -40,7 +40,7 @@ namespace Domain.Entities
         {
             if(startDate > EndReservationDate)
             {
-                throw new InvalidStartDateException("Reservation start date cannot be heigher than reservation end date");
+                throw new InvalidStartDateException("Reservation start date cannot be higher than reservation end date");
             }
             StartReservationDate = startDate;
         }

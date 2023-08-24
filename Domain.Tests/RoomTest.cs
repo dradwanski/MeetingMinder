@@ -24,7 +24,7 @@ namespace Domain.Tests
 
             //assert
 
-            Assert.Equal("Jobs", room.Name.Name);
+            Assert.Equal("Jobs", room.Name.Value);
 
 
         }

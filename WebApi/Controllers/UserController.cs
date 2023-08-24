@@ -28,7 +28,7 @@ namespace Hotel.API.Controllers
         public async Task<ActionResult> GetMe()
         {
             var viewModel = new UserModel();
-            viewModel.Name = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value;
+            viewModel.Value = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Value).Value;
             viewModel.UserId = int.Parse(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
             viewModel.Role = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
             viewModel.Email = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;

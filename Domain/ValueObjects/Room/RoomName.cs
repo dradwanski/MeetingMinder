@@ -10,14 +10,14 @@ namespace Domain.ValueObjects.Room
 {
     public class RoomName
     {
-        public string Name { get; private set; }
-        public RoomName(string name)
+        public string Value { get; private set; }
+        public RoomName(string value)
         {
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(value))
             {
-                throw new FirstNameException("Name of room cannot be null");
+                throw new FirstNameException("Value of room cannot be null");
             }
-            Name = name;
+            Value = value;
         }
     }
 }

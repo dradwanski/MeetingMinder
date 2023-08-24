@@ -9,7 +9,7 @@ namespace Domain.Entities
 {
     public class Room
     {
-        public int Id { get; private set; }
+        public int RoomId { get; private set; }
         public RoomName Name { get; private set; }
 
         private Room()
