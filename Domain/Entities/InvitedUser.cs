@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class InvitedUser
     {
 
-        public int invitedUserId { get; private set; }
+        public int InvitedUserId { get; private set; }
         public User User { get; init; }
         public InvitedUserStatus UserStatus { get; private set; }
 

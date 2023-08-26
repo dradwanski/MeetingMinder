@@ -5,7 +5,7 @@ namespace Application.Queries.User
 {
     public record GetUserByLastNameQuery : IRequest<UserDto>
     {
-        public string LastName { get; set; }
+        public string LastName { get; init; }
 
     }
 }

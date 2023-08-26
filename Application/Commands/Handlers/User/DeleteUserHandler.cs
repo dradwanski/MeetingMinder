@@ -1,6 +1,6 @@
 ﻿using Application.Commands.User;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.User
@@ -20,7 +20,9 @@ namespace Application.Commands.Handlers.User
                 throw new UserNotExistException("User does not exist");
             }
 
-            await _userRepository.DeleteUserAsync(user);
+            user.Delete();
+
+            await _userRepository.UpdateUserAsync(user);
 
             return new Unit();
         }

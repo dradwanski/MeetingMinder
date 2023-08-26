@@ -1,7 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Queries.Dtos;
 using Application.Queries.Reservation;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Queries.Handlers.Reservation
@@ -24,13 +24,12 @@ namespace Application.Queries.Handlers.Reservation
                 throw new RoomNotExistException("The room is not exist");
             }
 
-            List<Domain.Entities.Reservation> reservations = await _reservationRepository.GetReservationsByRoomAsync(request.Room);
+            var reservations = await _reservationRepository.GetReservationsByRoomAsync(request.Room);
 
-            List<ReservationDto> userDtos = reservations.Select(reservation => new ReservationDto(reservation.ReservationId,
+            return reservations.Select(reservation => new ReservationDto(reservation.ReservationId,
                 reservation.ReservedRoom.RoomId, reservation.ReservedUser.UserId, reservation.StartReservationDate, reservation.EndReservationDate,
                 reservation.InvitedUsers.Select(invitedUser => new InvitedUserDto(invitedUser.User.UserId, invitedUser.UserStatus)).ToList())).ToList();
-
-            return userDtos;
+           
         }
     }
 }

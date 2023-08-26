@@ -7,10 +7,10 @@ namespace Domain.Entities
     {
         public int Id { get; init; }
 
-        private DateTime firstDayOfWeek;
+        private DateTime _firstDayOfWeek;
 
-        private List<Reservation> reservations = new List<Reservation>();
-        public IReadOnlyCollection<Reservation> Reservations => reservations.AsReadOnly();
+        private readonly List<Reservation> _reservations = new List<Reservation>();
+        public IReadOnlyCollection<Reservation> Reservations => _reservations.AsReadOnly();
 
         private WeeklyReservation()
         {
@@ -25,18 +25,18 @@ namespace Domain.Entities
         private void SetMonday(DateTime date)
         {
 
-            firstDayOfWeek = date.AddDays(-(int)date.DayOfWeek);
+            _firstDayOfWeek = date.AddDays(-(int)date.DayOfWeek);
 
         }
 
 
         public void CancelReservation(Reservation reservation)
         {
-            var reservationToCancel = reservations.FirstOrDefault(x => x.ReservationId == reservation.ReservationId);
+            var reservationToCancel = _reservations.FirstOrDefault(x => x.ReservationId == reservation.ReservationId);
 
             if (reservationToCancel != null)
             {
-                reservations.Remove(reservationToCancel);
+                _reservations.Remove(reservationToCancel);
             }
 
         }
@@ -44,12 +44,12 @@ namespace Domain.Entities
 
         public void AddReservation(Reservation reservation, ILimitReservationsForUser limitReservationsForUser)
         {
-            if (reservation.StartReservationDate > firstDayOfWeek.AddDays(7))
+            if (reservation.StartReservationDate > _firstDayOfWeek.AddDays(7))
             {
                 throw new InvalidAddReservationException("Invalid reservation week");
             }
 
-            var weeklyReservation = reservations.Count(x => x.ReservedUser.UserId == reservation.ReservedUser.UserId);
+            var weeklyReservation = _reservations.Count(x => x.ReservedUser.UserId == reservation.ReservedUser.UserId);
 
             var limit = limitReservationsForUser.GetReservationLimit(reservation.ReservedUser);
 
@@ -57,7 +57,7 @@ namespace Domain.Entities
             {
                 throw new InvalidAddReservationException("The user limit for making reservations has been reached");
             }
-            reservations.Add(reservation);
+            _reservations.Add(reservation);
         }
 
 

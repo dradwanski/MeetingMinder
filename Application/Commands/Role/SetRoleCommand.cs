@@ -5,7 +5,7 @@ namespace Application.Commands.Role
 {
     public record SetRoleCommand : IRequest<Unit>
     {
-        public int UserId { get; set; }
-        public RoleName RoleName { get; set; }
+        public int UserId { get; init; }
+        public RoleName RoleName { get; init; }
     }
 }

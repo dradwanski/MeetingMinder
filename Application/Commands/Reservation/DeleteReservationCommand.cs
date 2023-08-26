@@ -4,6 +4,6 @@ namespace Application.Commands.Reservation
 {
     public record DeleteReservationCommand : IRequest<Unit>
     {
-        public int ReservationId { get; set; }
+        public int ReservationId { get; init; }
     }
 }

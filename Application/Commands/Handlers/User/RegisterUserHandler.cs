@@ -1,33 +1,31 @@
 ﻿using Application.Commands.Dtos.User;
 using Application.Commands.User;
 using Application.Exceptions;
-using Application.Repositores;
-using Domain.Repositores;
+using Application.Repositories;
+using Domain.ValueObjects.Role;
 using MediatR;
 
 namespace Application.Commands.Handlers.User
 {
     public class RegisterUserHandler : IRequestHandler<RegisterUserCommand, RegisterUserDto>
     {
-        public readonly IUserRepository _userRepository;
-        public readonly IRoleRepository _roleRepository;
-        public RegisterUserHandler(IUserRepository userRepository, IRoleRepository roleRepository)
+        private readonly IUserRepository _userRepository;
+        public RegisterUserHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _roleRepository = roleRepository;
         }
         public async Task<RegisterUserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByMailAsync(request.Email);
 
-            if (user is null)
+            
+            //Jak nie jest nullem raczej 
+            if (user is not null)
             {
                 throw new UserExistException("The user with the given email already exists");
             }
-
-            var defaultRole = await _roleRepository.GetDefaultRoleAsync();
-
-            var newUser = new Domain.Entities.User(request.FirstName, request.LastName, defaultRole.Name, request.Password, request.Email);
+            
+            var newUser = new Domain.Entities.User(request.FirstName, request.LastName, (RoleName)0, request.Password, request.Email);
 
             await _userRepository.RegisterUserAsync(newUser);
 

@@ -5,7 +5,7 @@ namespace Application.Queries.Reservation
 {
     public record GetReservationByDatesQuery : IRequest<List<ReservationDto>>
     {
-        public DateTime StartReservationDate { get; set; }
-        public DateTime EndReservationDate { get; set; }
+        public DateTime StartReservationDate { get; init; }
+        public DateTime EndReservationDate { get; init; }
     }
 }

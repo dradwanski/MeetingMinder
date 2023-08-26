@@ -5,7 +5,7 @@ namespace Domain.ValueObjects.User
 {
     public record Password
     {
-        public string Value { get; private set; }
+        public string Value { get; init; }
         Regex ValidatePassword = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
 
         public Password(string password)

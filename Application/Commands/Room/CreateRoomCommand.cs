@@ -5,6 +5,6 @@ namespace Application.Commands.Room
 {
     public record CreateRoomCommand : IRequest<CreatedRoomDto>
     {
-        public string Name { get; private set; }
+        public string Name { get; init; }
     }
 }

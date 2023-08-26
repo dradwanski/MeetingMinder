@@ -1,7 +1,7 @@
 ﻿using Application.Commands.Dtos.User;
 using Application.Commands.User;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.User

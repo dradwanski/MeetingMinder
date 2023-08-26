@@ -1,6 +1,6 @@
 ﻿using Application.Queries.Dtos;
 using Application.Queries.User;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Queries.Handlers.User

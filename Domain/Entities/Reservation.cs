@@ -10,8 +10,8 @@ namespace Domain.Entities
         public DateTime StartReservationDate { get; private set; }
         public DateTime EndReservationDate { get; private set; }
 
-        private List<InvitedUser> invitedUsers = new List<InvitedUser>();
-        public IReadOnlyCollection<InvitedUser> InvitedUsers => invitedUsers.AsReadOnly();
+        private readonly List<InvitedUser> _invitedUsers = new List<InvitedUser>();
+        public IReadOnlyCollection<InvitedUser> InvitedUsers => _invitedUsers.AsReadOnly();
 
         private Reservation()
         {
@@ -42,6 +42,7 @@ namespace Domain.Entities
             {
                 throw new InvalidStartDateException("Reservation start date cannot be higher than reservation end date");
             }
+            
             StartReservationDate = startDate;
         }
 
@@ -51,27 +52,25 @@ namespace Domain.Entities
             {
                 throw new InvalidEndDateException("Reservation end date cannot be lower than reservation start date");
             }
+            
             EndReservationDate = endDate;
         }
 
         public void Invite(User user)
         {
-
-            InvitedUser invitedUser = new InvitedUser(user);
+            var invitedUser = new InvitedUser(user);
 
             if (ReservedUser.Role.Name == ValueObjects.Role.RoleName.Boss)
             {
                 invitedUser.Accept();
             }
-
-
-            invitedUsers.Add(invitedUser);
+            
+            _invitedUsers.Add(invitedUser);
 
         }
 
         public void Invite(List<User> users)
         {
-
             foreach (var item in users)
             {
                 Invite(item);
@@ -81,12 +80,9 @@ namespace Domain.Entities
 
         public void CancelInvite(User user)
         {
-            var invitedUser = invitedUsers.FirstOrDefault(x => x.User.UserId == user.UserId);
+            var invitedUser = _invitedUsers.FirstOrDefault(x => x.User.UserId == user.UserId);
 
-            if (invitedUser != null)
-            {
-                invitedUser.Cancel();
-            }
+            invitedUser?.Cancel();
 
         }
 

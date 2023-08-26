@@ -5,7 +5,7 @@ namespace Application.Queries.Room
 {
     public record GetRoomByRoomNameQuery : IRequest<RoomDto>
     {
-        public string RoomName { get; set; }
+        public string RoomName { get; init; }
 
     }
 }

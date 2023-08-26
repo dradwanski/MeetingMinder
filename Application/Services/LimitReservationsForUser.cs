@@ -10,7 +10,7 @@ namespace Domain
             ValueObjects.Role.RoleName.Boss => int.MinValue,
             ValueObjects.Role.RoleName.Manager => 3,
             ValueObjects.Role.RoleName.User => 1,
-            ValueObjects.Role.RoleName => 0
+            _ => 0
         };
     }
 }

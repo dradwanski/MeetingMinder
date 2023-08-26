@@ -1,6 +1,6 @@
 ﻿using Application.Commands.Reservation;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.Reservation
@@ -19,6 +19,7 @@ namespace Application.Commands.Handlers.Reservation
         }
         public async Task<Unit> Handle(UpdateReservationCommand request, CancellationToken cancellationToken)
         {
+            //to samo co w create reservation
             var room = await _roomRepository.GetRoomByIdAsync(request.ReservedRoomId);
             var user = await _userRepository.GetUserByIdAsync(request.ReservedUserId);
             var reservationByDates =

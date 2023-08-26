@@ -1,7 +1,6 @@
-﻿using Application;
-using Domain.Entities;
+﻿using Domain.Entities;
 
-namespace Domain.Repositores
+namespace Application.Repositories
 {
     public interface IUserRepository
     {
@@ -16,7 +15,5 @@ namespace Domain.Repositores
         public Task CreateUserAsync(User newUser);
         public Task RegisterUserAsync(User newUser);
         public Task UpdateUserAsync(User user);
-        public Task DeleteUserAsync(User user);
-
     }
 }

@@ -5,6 +5,6 @@ namespace Application.Queries.Reservation
 {
     public record GetReservationsByUserQuery : IRequest<List<ReservationDto>>
     {
-        public Domain.Entities.User User { get; set; }
+        public Domain.Entities.User User { get; init; }
     }
 }

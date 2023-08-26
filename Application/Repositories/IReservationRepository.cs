@@ -1,10 +1,9 @@
 ﻿using Domain.Entities;
 
-namespace Domain.Repositores
+namespace Application.Repositories
 {
     public interface IReservationRepository
     {
-        public Task CreateReservationAsync(Reservation reservation);
         public Task UpdateReservationAsync(Reservation reservation);
         public Task DeleteReservationAsync(Reservation reservation);
         public Task<Reservation> GetReservationByIdAsync(int reservationId);

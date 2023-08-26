@@ -2,7 +2,7 @@
 {
     public abstract class DomainException : Exception
     {
-        public DomainException(string exception) : base(exception)
+        protected DomainException(string exception) : base(exception)
         {
 
         }

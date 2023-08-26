@@ -5,6 +5,6 @@ namespace Application.Queries.Reservation
 {
     public record GetReservationsByRoomQuery : IRequest<List<ReservationDto>>
     {
-        public Domain.Entities.Room Room { get; set; }
+        public Domain.Entities.Room Room { get; init; }
     }
 }

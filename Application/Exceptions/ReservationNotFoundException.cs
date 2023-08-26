@@ -1,6 +1,6 @@
 ﻿namespace Application.Exceptions
 {
-    public class ReservationNotFoundException : ApplicationException
+    public class ReservationNotFoundException : AppException
     {
         public ReservationNotFoundException(string exception) : base(exception)
         {

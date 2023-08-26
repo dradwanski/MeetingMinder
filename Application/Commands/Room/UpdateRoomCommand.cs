@@ -4,7 +4,7 @@ namespace Application.Commands.Room
 {
     public record UpdateRoomCommand : IRequest<Unit>
     {
-        public int RoomId { get; private set; }
-        public string Name { get; private set; }
+        public int RoomId { get; init; }
+        public string Name { get; init; }
     }
 }
