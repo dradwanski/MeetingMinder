@@ -4,7 +4,7 @@ namespace Domain.ValueObjects.User
 {
     public record Email
     {
-        public string Value { get; private set; }
+        public string Value { get; init; }
 
         public Email(string email)
         {
@@ -12,10 +12,11 @@ namespace Domain.ValueObjects.User
             {
                 throw new MailValidateException("Email is null or white space");
             }
+            
             try
             {
-
                 new System.Net.Mail.MailAddress(email);
+                
                 Value = email;
             }
             catch

@@ -1,6 +1,6 @@
 ﻿using Application.Queries.Dtos;
 using Application.Queries.Reservation;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Queries.Handlers.Reservation
@@ -14,14 +14,12 @@ namespace Application.Queries.Handlers.Reservation
         }
         public async Task<List<ReservationDto>> Handle(GetAllReservationsQuery request, CancellationToken cancellationToken)
         {
-            List<Domain.Entities.Reservation> reservations = await _reservationRepository.GetReservationsAsync();
+            var reservations = await _reservationRepository.GetReservationsAsync();
 
-            List<ReservationDto> reservationDtos = reservations
-                .Select(reseervation => new ReservationDto(reseervation.ReservationId,
-                    reseervation.ReservedRoom.RoomId, reseervation.ReservedUser.UserId, reseervation.StartReservationDate,
-                    reseervation.EndReservationDate, reseervation.InvitedUsers.Select(invitedUser => new InvitedUserDto(invitedUser.User.UserId, invitedUser.UserStatus)).ToList())).ToList();
-
-            return reservationDtos;
+            return reservations
+                .Select(reservation => new ReservationDto(reservation.ReservationId,
+                    reservation.ReservedRoom.RoomId, reservation.ReservedUser.UserId, reservation.StartReservationDate,
+                    reservation.EndReservationDate, reservation.InvitedUsers.Select(invitedUser => new InvitedUserDto(invitedUser.User.UserId, invitedUser.UserStatus)).ToList())).ToList();
         }
     }
 }

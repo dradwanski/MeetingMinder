@@ -1,6 +1,6 @@
 ﻿namespace Application.Exceptions
 {
-    public class UserNotExistException : ApplicationException
+    public class UserNotExistException : AppException
     {
         public UserNotExistException(string exception) : base(exception)
         {

@@ -2,7 +2,13 @@
 {
     public class Token
     {
-        public string AccessToken { get; set; }
-        public string ExpireDate { get; set; }
+        public Token(string accessToken, string expireDate)
+        {
+            AccessToken = accessToken;
+            ExpireDate = expireDate;
+        }
+
+        public string AccessToken { get; init; }
+        public string ExpireDate { get; init; }
     }
 }

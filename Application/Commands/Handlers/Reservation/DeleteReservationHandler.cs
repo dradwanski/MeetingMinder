@@ -1,6 +1,6 @@
 ﻿using Application.Commands.Reservation;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.Reservation

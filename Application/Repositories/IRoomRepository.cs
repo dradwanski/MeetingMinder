@@ -1,6 +1,6 @@
 ﻿using Domain.Entities;
 
-namespace Domain.Repositores
+namespace Application.Repositories
 {
     public interface IRoomRepository
     {

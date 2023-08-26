@@ -5,7 +5,7 @@ namespace Application.Queries.User
 {
     public record GetUserByIdQuery : IRequest<UserDto>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
 
     }
 

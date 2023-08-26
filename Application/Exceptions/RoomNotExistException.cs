@@ -1,6 +1,6 @@
 ﻿namespace Application.Exceptions
 {
-    public class RoomNotExistException : ApplicationException
+    public class RoomNotExistException : AppException
     {
         public RoomNotExistException(string exception) : base(exception)
         {

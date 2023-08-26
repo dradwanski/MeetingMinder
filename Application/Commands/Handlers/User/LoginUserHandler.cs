@@ -1,7 +1,7 @@
 ﻿using Application.Commands.Dtos.User;
 using Application.Commands.User;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.User
@@ -16,12 +16,15 @@ namespace Application.Commands.Handlers.User
         public async Task<LoggedUserDto> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByMailAsync(request.Email);
-            if (user is null)
+            if (user is null || user.IsDeleted)
             {
                 throw new UserNotExistException("User does not exist");
             }
 
+            //TODO: to ci robi twój obiekt User.Password
             //weryfikacja hasła
+            
+            
 
 
             var token = await _userRepository.LoginAsync(request.Email, request.Password);

@@ -5,7 +5,7 @@ namespace Application.Queries.User
 {
     public record GetUserByMailQuery : IRequest<UserDto>
     {
-        public string Email { get; set; }
+        public string Email { get; init; }
 
     }
 }

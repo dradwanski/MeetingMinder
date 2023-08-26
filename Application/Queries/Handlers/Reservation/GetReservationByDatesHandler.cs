@@ -1,6 +1,6 @@
 ﻿using Application.Queries.Dtos;
 using Application.Queries.Reservation;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Queries.Handlers.Reservation
@@ -17,11 +17,8 @@ namespace Application.Queries.Handlers.Reservation
             var reservation = await _reservationRepository.GetReservationByDatesAsync(request.StartReservationDate,
                 request.EndReservationDate);
 
-            List<ReservationDto> reservationsDtos = reservation.Select(reservation => new ReservationDto(reservation.ReservationId, reservation.ReservedRoom.RoomId, reservation.ReservedUser.UserId,
+            return reservation.Select(reservation => new ReservationDto(reservation.ReservationId, reservation.ReservedRoom.RoomId, reservation.ReservedUser.UserId,
                 reservation.StartReservationDate, reservation.EndReservationDate, reservation.InvitedUsers.Select(invitedUser => new InvitedUserDto(invitedUser.User.UserId, invitedUser.UserStatus)).ToList())).ToList();
-
-
-            return reservationsDtos;
         }
     }
 }

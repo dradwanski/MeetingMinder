@@ -12,6 +12,9 @@ namespace Domain.Entities
         public Password Password { get; private set; }
         public Email Email { get; private set; }
 
+        //TODO: zrobić z tego valuo object (jak rola)
+        public bool IsDeleted { get; set; } = false;
+
 
         private User()
         {
@@ -48,6 +51,8 @@ namespace Domain.Entities
         {
             Email = new Email(email);
         }
+
+        public void Delete() => IsDeleted = true;
 
     }
 }

@@ -5,6 +5,6 @@ namespace Application.Queries.Reservation
 {
     public record GetReservationByIdQuery : IRequest<ReservationDto>
     {
-        public int ReservationId { get; set; }
+        public int ReservationId { get; init; }
     }
 }

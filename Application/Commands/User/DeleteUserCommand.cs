@@ -4,6 +4,6 @@ namespace Application.Commands.User
 {
     public record DeleteUserCommand : IRequest<Unit>
     {
-        public int UserId { get; set; }
+        public int UserId { get; init; }
     }
 }

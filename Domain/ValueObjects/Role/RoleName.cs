@@ -2,8 +2,8 @@
 {
     public enum RoleName
     {
-        Boss,
+        User = 0,
         Manager,
-        User
+        Boss,
     }
 }

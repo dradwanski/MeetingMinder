@@ -1,7 +1,7 @@
 ﻿using Application.Commands.Dtos.Room;
 using Application.Commands.Room;
 using Application.Exceptions;
-using Domain.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.Room

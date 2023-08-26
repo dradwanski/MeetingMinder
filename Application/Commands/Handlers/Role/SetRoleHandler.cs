@@ -1,21 +1,29 @@
 ﻿using Application.Commands.Role;
-using Application.Repositores;
+using Application.Repositories;
 using MediatR;
 
 namespace Application.Commands.Handlers.Role
 {
     public class SetRoleHandler : IRequestHandler<SetRoleCommand, Unit>
     {
-        private readonly IRoleRepository _roleRepository;
-        public SetRoleHandler(IRoleRepository roleRepository)
+        private readonly IUserRepository _userRepository;
+
+        public SetRoleHandler(IUserRepository userRepository)
         {
-            _roleRepository = roleRepository;
+            _userRepository = userRepository;
         }
         public async Task<Unit> Handle(SetRoleCommand request, CancellationToken cancellationToken)
         {
-            var role = new Domain.Entities.Role(request.RoleName);
+            var user = await _userRepository.GetUserByIdAsync(request.UserId);
 
-            await _roleRepository.SetRoleAsync(request.UserId, role);
+            if (user is null)
+            {
+                throw new Exception("User not found");
+            }
+            
+            user.SetNewRole(request.RoleName);
+
+            await _userRepository.UpdateUserAsync(user);
 
             return new Unit();
         }
