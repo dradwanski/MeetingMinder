@@ -1,7 +1,6 @@
 ﻿using Application.Commands.Dtos.User;
 using Application.Commands.User;
 using Application.Exceptions;
-using Domain.Entities;
 using Domain.Repositores;
 using MediatR;
 
@@ -24,7 +23,7 @@ namespace Application.Commands.Handlers.User
                 throw new UserExistException("The user with the given email already exists");
             }
 
-            var newUser = new User(request.FirstName, request.LastName, request.Role, request.Password, request.Email);
+            var newUser = new Domain.Entities.User(request.FirstName, request.LastName, request.Role, request.Password, request.Email);
 
             await _userRepository.CreateUserAsync(newUser);
 

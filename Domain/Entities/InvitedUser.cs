@@ -5,7 +5,7 @@ namespace Domain.Entities
     public class InvitedUser
     {
 
-        
+        public int invitedUserId { get; private set; }
         public User User { get; init; }
         public InvitedUserStatus UserStatus { get; private set; }
 
@@ -32,7 +32,7 @@ namespace Domain.Entities
             UserStatus = InvitedUserStatus.Rejected;
         }
 
-        
+
 
     }
 }

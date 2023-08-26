@@ -1,12 +1,7 @@
 ﻿using Domain.Entities;
-using Domain.ValueObjects.Role;
-using Domain.Exceptions.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.EntitiesGenerator;
+using Domain.Exceptions.User;
+using Domain.ValueObjects.Role;
 
 namespace Domain.Tests
 {

@@ -1,6 +1,5 @@
 ﻿using Application.Queries.Dtos;
 using Application.Queries.User;
-using Domain.Entities;
 using Domain.Repositores;
 using MediatR;
 
@@ -15,7 +14,7 @@ namespace Application.Queries.Handlers.User
         }
         public async Task<List<UserDto>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            List<User> users = await _userRepository.GetUsersAsync();
+            List<Domain.Entities.User> users = await _userRepository.GetUsersAsync();
 
             List<UserDto> usersDtos = users.Select(user => new UserDto(user.UserId, user.FirstName.Value, user.LastName.Value, user.Role.Name, user.Password.Value, user.Email.Value)).ToList();
 

@@ -4,7 +4,7 @@ namespace Domain.ValueObjects.User
 {
     public record FirstName
     {
-        public string Value{ get; private set; }
+        public string Value { get; private set; }
         public FirstName(string firstName)
         {
 

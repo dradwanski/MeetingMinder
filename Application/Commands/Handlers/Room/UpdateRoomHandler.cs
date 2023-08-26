@@ -25,7 +25,7 @@ namespace Application.Commands.Handlers.Room
 
             room.SetNewName(request.Name);
 
-            await _roomRepository.ChangeRoomNameAsync(room);
+            await _roomRepository.UpdateRoomAsync(room);
 
             return new Unit();
 

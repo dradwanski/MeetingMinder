@@ -158,7 +158,7 @@ namespace Domain.Tests
         {
 
             //arrange
-            
+
             Reservation reservation = reservationGenerator.GenerateReservation(RoleName.Boss, startDate, endDate);
 
             User user = userGenerator.GenerateUser(RoleName.User);

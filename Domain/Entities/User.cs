@@ -1,10 +1,5 @@
-﻿using Domain.ValueObjects.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.ValueObjects.Role;
+﻿using Domain.ValueObjects.Role;
+using Domain.ValueObjects.User;
 
 namespace Domain.Entities
 {
@@ -16,11 +11,11 @@ namespace Domain.Entities
         public Role Role { get; private set; }
         public Password Password { get; private set; }
         public Email Email { get; private set; }
-        
+
 
         private User()
         {
-            
+
         }
 
         public User(string firstName, string lastName, RoleName role, string password, string email)

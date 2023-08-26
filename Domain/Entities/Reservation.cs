@@ -4,7 +4,7 @@ namespace Domain.Entities
 {
     public class Reservation
     {
-        public int Id { get; private set; }
+        public int ReservationId { get; private set; }
         public Room ReservedRoom { get; private set; }
         public User ReservedUser { get; private set; }
         public DateTime StartReservationDate { get; private set; }
@@ -15,7 +15,7 @@ namespace Domain.Entities
 
         private Reservation()
         {
-            
+
         }
 
         public Reservation(Room reservedRoom, User reservedUser, DateTime startReservationDate, DateTime endReservationDate)
@@ -38,7 +38,7 @@ namespace Domain.Entities
 
         public void ChangeStartDate(DateTime startDate)
         {
-            if(startDate > EndReservationDate)
+            if (startDate > EndReservationDate)
             {
                 throw new InvalidStartDateException("Reservation start date cannot be higher than reservation end date");
             }
@@ -66,7 +66,7 @@ namespace Domain.Entities
 
 
             invitedUsers.Add(invitedUser);
-            
+
         }
 
         public void Invite(List<User> users)
@@ -76,20 +76,20 @@ namespace Domain.Entities
             {
                 Invite(item);
             }
-            
+
         }
 
         public void CancelInvite(User user)
         {
             var invitedUser = invitedUsers.FirstOrDefault(x => x.User.UserId == user.UserId);
 
-            if(invitedUser != null)
+            if (invitedUser != null)
             {
                 invitedUser.Cancel();
             }
-         
+
         }
-        
+
 
     }
 }

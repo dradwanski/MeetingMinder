@@ -1,10 +1,5 @@
 ﻿using Domain.Entities;
 using Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
@@ -14,7 +9,8 @@ namespace Domain
         {
             ValueObjects.Role.RoleName.Boss => int.MinValue,
             ValueObjects.Role.RoleName.Manager => 3,
-            ValueObjects.Role.RoleName.User => 1
+            ValueObjects.Role.RoleName.User => 1,
+            ValueObjects.Role.RoleName => 0
         };
     }
 }

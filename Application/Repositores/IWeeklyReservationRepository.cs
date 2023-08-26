@@ -1,14 +1,10 @@
 ﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Repositores
 {
     public interface IWeeklyReservationRepository
     {
-        
+        public Task<WeeklyReservation> GetWeeklyReservationAsync(DateTime date);
+        public Task<WeeklyReservation> SaveWeeklyReservationAsync(WeeklyReservation weeklyReservation);
     }
 }

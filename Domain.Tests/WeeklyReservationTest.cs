@@ -15,7 +15,7 @@ namespace Domain.Tests
 
         DateTime startDate = new DateTime(2023, 07, 20, 21, 00, 00);
         DateTime endDate = new DateTime(2023, 07, 20, 21, 30, 00);
-        
+
         DateTime secondStartDate = new DateTime(2023, 07, 26, 21, 00, 00);
         DateTime secondEndDate = new DateTime(2023, 07, 26, 21, 30, 00);
 
@@ -40,12 +40,12 @@ namespace Domain.Tests
 
             //assert
 
-            var argument = weeklyReservations.Reservations.FirstOrDefault(x => x.Id == reservation.Id);
+            var argument = weeklyReservations.Reservations.FirstOrDefault(x => x.ReservationId == reservation.ReservationId);
 
-            Assert.NotNull(argument); 
+            Assert.NotNull(argument);
 
         }
-        
+
         [Fact]
         public void AddReservation_UserAddSecondReservationInOneWeek_InvalidAddReservationException()
         {
@@ -67,7 +67,7 @@ namespace Domain.Tests
             Assert.Throws<InvalidAddReservationException>(action);
 
         }
-        
+
 
         [Fact]
         public void AddReservation_UserAddReservationInNextWeek_InvalidAddReservationException()
@@ -108,12 +108,12 @@ namespace Domain.Tests
 
             //assert
 
-            var argument = weeklyReservations.Reservations.FirstOrDefault(x => x.Id == reservation.Id);
+            var argument = weeklyReservations.Reservations.FirstOrDefault(x => x.ReservationId == reservation.ReservationId);
 
             Assert.Null(argument);
 
         }
-        
+
     }
 
 }

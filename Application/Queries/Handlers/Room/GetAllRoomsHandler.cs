@@ -1,7 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using Application.Queries.Dtos;
+﻿using Application.Queries.Dtos;
 using Application.Queries.Room;
-using Domain.Entities;
 using Domain.Repositores;
 using MediatR;
 
@@ -16,7 +14,7 @@ namespace Application.Queries.Handlers.Room
         }
         public async Task<List<RoomDto>> Handle(GetAllRoomsQuery request, CancellationToken cancellationToken)
         {
-            List<Room> rooms = await _roomRepository.GetRoomsAsync();
+            List<Domain.Entities.Room> rooms = await _roomRepository.GetRoomsAsync();
 
             List<RoomDto> roomsDtos = rooms.Select(room => new RoomDto(room.RoomId, room.Name.Value)).ToList();
 

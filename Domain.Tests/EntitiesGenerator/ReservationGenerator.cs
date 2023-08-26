@@ -1,12 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.EntitiesGenerator;
 using Domain.ValueObjects.Role;
-using Domain.ValueObjects.Room;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Tests.EntitiesGenerator
 {

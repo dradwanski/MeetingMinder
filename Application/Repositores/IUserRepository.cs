@@ -6,6 +6,7 @@ namespace Domain.Repositores
     public interface IUserRepository
     {
         public Task<User> GetUserByIdAsync(int userId);
+        public Task<List<User>> GetUsersByIdAsync(List<int> usersId);
         public Task<User> GetUserByMailAsync(string email);
         public Task<User> GetUserByFirstNameAsync(string firstName);
         public Task<User> GetUserByLastNameAsync(string lastName);

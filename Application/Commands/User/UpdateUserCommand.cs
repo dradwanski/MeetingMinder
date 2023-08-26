@@ -1,11 +1,5 @@
-﻿using Application.Commands.Dtos;
-using Domain.ValueObjects.Role;
+﻿using Domain.ValueObjects.Role;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Commands.User
 {

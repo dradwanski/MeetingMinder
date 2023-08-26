@@ -14,7 +14,7 @@ namespace Domain.ValueObjects.User
             }
             try
             {
-                
+
                 new System.Net.Mail.MailAddress(email);
                 Value = email;
             }

@@ -1,7 +1,6 @@
 ﻿using Application.Commands.Dtos.Room;
 using Application.Commands.Room;
 using Application.Exceptions;
-using Domain.Entities;
 using Domain.Repositores;
 using MediatR;
 
@@ -24,7 +23,7 @@ namespace Application.Commands.Handlers.Room
                 throw new RoomExistException("The room with the given name already exists");
             }
 
-            var newRoom = new Room(request.Name);
+            var newRoom = new Domain.Entities.Room(request.Name);
 
             await _roomRepository.CreateRoomAsync(newRoom);
 
